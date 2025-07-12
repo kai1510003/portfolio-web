@@ -1,0 +1,269 @@
+/* Variables */
+:root {
+  --primary: #0d6efd;
+  --dark: #1a1a1a;
+  --accent: #6c63ff;
+  --bg-light: #f9f9fb;
+  --text-dark: #1e1e1e;
+  --text-muted: #6c757d;
+  --light: #fafafa;
+  --font-sans: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Base Reset & Typography */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* Utility Classes */
+.btn {
+  display: inline-block;
+  /* Ensures padding and margin work as expected for anchor tags */
+  background: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  /* Added transition to the base button */
+}
+
+.btn:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  margin-top: 0.5rem;
+  background: var(--dark);
+  color: white;
+  padding: 0.5rem 1rem;
+  /* Removed text-decoration and border-radius as they are inherited from .btn or can be managed there */
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--dark);
+  color: var(--light);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--light);
+}
+
+.nav {
+  display: flex;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.nav a {
+  color: var(--light);
+  text-decoration: none;
+  margin-left: 1.5rem;
+}
+
+.nav-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--light);
+  cursor: pointer;
+  /* Added cursor pointer for toggle button */
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  background: url('../assets/images/hero.jpg') center/cover no-repeat;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  color: var(--light);
+}
+
+.hero-content p {
+  margin: 1rem 0;
+  color: var(--light);
+}
+
+/* General Section Styling */
+.section {
+  padding: 5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+}
+
+/* About Section */
+.about p {
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+
+/* Skills Section */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  max-width: 700px;
+  /* Applied max-width to skills-list for consistency */
+  margin-bottom: 2rem;
+  /* Applied margin-bottom for consistency */
+}
+
+.skills-list li {
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 4px;
+}
+
+/* Projects Section */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
+
+.project-card {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.project-card img {
+  width: 100%;
+  display: block;
+  height: 200px;
+  /* Added a fixed height for project images for consistency */
+  object-fit: cover;
+  /* Ensures images cover the area without distortion */
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+/* Contact Form Section */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.contact-form button {
+  align-self: flex-start;
+}
+
+/* Footer */
+.footer {
+  background: var(--dark);
+  color: var(--light);
+  text-align: center;
+  padding: 2rem;
+}
+
+.footer .social a {
+  margin: 0 0.5rem;
+  color: var(--light);
+  /* Ensure social icons are visible */
+  text-decoration: none;
+  /* Remove underline from social links */
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  .nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--dark);
+    width: 200px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    flex-direction: column;
+  }
+
+  .nav.open {
+    transform: translateX(0);
+  }
+
+  .nav ul {
+    flex-direction: column;
+    margin: 1rem 0;
+    width: 100%;
+    /* Ensure the list takes full width of the nav container */
+  }
+
+  .nav a {
+    margin: 1rem;
+    display: block;
+    /* Make links block-level for better click area */
+    padding: 0.5rem 0;
+    /* Add some padding for better spacing */
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
